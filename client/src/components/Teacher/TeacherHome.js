@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import { Link } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom'
 import styled from 'styled-components'
+import Nav from '../BoilerPlate/Nav'
 const BodyWrapper = styled.div`
 display: flex;
 justify-content: flex-start;
@@ -46,14 +47,16 @@ class TeacherHome extends Component {
 
   render () {
     return (
+      <Router>
       <BodyWrapper>
-        
+        <Nav />
         <UserList><b>User List:</b> <br/>{this.state.users.map(user => {
           return (<Link key={user._id} to={`/teacher/${user._id}/studentinfo`}>{user.firstName} {user.lastName}<br /></Link>)
         })}
         </UserList>
         
       </BodyWrapper>
+      </Router>
     )
   }
 }

@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom'
 import styled from 'styled-components'
 import axios from 'axios'
 
+import Header from './components/BoilerPlate/Header'
 import CreateStudent from './components/Student/CreateStudent'
 import HomePage from './components/Student/HomePage'
 import TeacherPage from './components/Teacher/TeacherHome'
@@ -16,7 +17,7 @@ class App extends Component {
   render() {
     return (<Router>
       <div>
-        
+        <Header />
         <Switch>
           <Route exact path="/" component={CreateStudent} />
           <Route exact path="/HomePage" component={HomePage} />

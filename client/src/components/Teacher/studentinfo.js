@@ -44,18 +44,18 @@ class StudentInfo extends Component {
   }
   deleteUser = async () => {
     //pull the user id from params
-    const userid = this.props.match.params.id
+    const studentId = this.props.match.params.studentId
     //check to see if i actually have the right id....
-    console.log(userid)
+    console.log(studentId)
     // delete the id from the api
-    const res = await axios.delete(`/api/users/${userid}`)
+    const res = await axios.delete(`/api/users/${studentId}`)
     //redirect back to the user page after the id has been deleted
     this.setState({ redirectToHome: true })
   }
 
   render() {
     if (this.state.redirectToHome) {
-      return <Redirect to={`/teachers`} />
+      return <Redirect to={`/teacher`} />
     }
     return (
       
