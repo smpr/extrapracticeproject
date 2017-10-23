@@ -28,7 +28,7 @@ class CreateStudent extends Component {
 
   render () {
     if (this.state.redirectToUser) {
-      return <Redirect to={`/user/${this.state.userId}/newslist`} />
+      return <Redirect to={`/HomePage`} />
     }
 
     return (
