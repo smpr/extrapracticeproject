@@ -78,8 +78,8 @@ class StudentInfo extends Component {
         <div>
           <b>Cohort:</b> {this.state.user.cohort}
         </div>
-        <button onClick={this.deleteUser}>Delete User</button>
-        <button>Edit</button>
+        <button onClick={this.deleteUser}>Delete Student</button>
+        <Link to={`/teacher/${this.props.match.params.studentId}/editstudentinfo`}><button>Edit</button></Link>
         </UserBlock>
       </BodyWrapper>
     );

@@ -25,6 +25,8 @@ class StudentInfo extends Component {
       firstName: '',
       lastName: '',
       email: '',
+      phone: '',
+      cohort: '',
     },
     redirectToHome: false
   }
@@ -36,7 +38,7 @@ class StudentInfo extends Component {
 
   getThisUser = async () => {
     try {
-      const res = await axios.get(`/api/users/${this.props.match.params.id}`)
+      const res = await axios.get(`/api/users/${this.props.match.params.studentId}`)
       this.setState({ user: res.data })
     } catch (err) {
       console.log(err)
@@ -44,7 +46,7 @@ class StudentInfo extends Component {
   }
   deleteUser = async () => {
     //pull the user id from params
-    const userid = this.props.match.params.id
+    const userid = this.props.match.params.studentId
     //check to see if i actually have the right id....
     console.log(userid)
     // delete the id from the api
@@ -66,8 +68,8 @@ class StudentInfo extends Component {
   }
   editUser = async () => {
 
-    const userid = this.props.match.params.id
-    const res = await axios.patch(`/api/users/${userid}`, {
+    const studentId = this.props.match.params.studentId
+    const res = await axios.patch(`/api/users/${studentId}`, {
       user: this.state.user,
     
 
@@ -76,7 +78,7 @@ class StudentInfo extends Component {
   }
   render() {
     if (this.state.redirectToHome) {
-      return <Redirect to={`/teachers`} />
+      return <Redirect to={`/teacher/${this.props.match.params.studentId}/studentinfo`} />
     }
     return (
       
@@ -93,7 +95,12 @@ class StudentInfo extends Component {
         <div>
           Email:<input onChange={this.handleChange} name="email" value={this.state.user.email} />
         </div>
-        <button onClick={this.deleteUser}>Delete User</button>
+        <div>
+          Phone:<input onChange={this.handleChange} type="number" name="phone" value={this.state.user.phone} />
+        </div>
+        <div>
+          Cohort:<input onChange={this.handleChange} name="cohort" value={this.state.user.cohort} />
+        </div>
         <button onClick={this.editUser}>Edit</button>
         </UserBlock>
       </BodyWrapper>

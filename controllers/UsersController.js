@@ -25,6 +25,8 @@ router.patch('/:id', async (req,res)=>{
   user.firstName = updatedUser.firstName
   user.lastName = updatedUser.lastName
   user.email = updatedUser.email
+  user.phone = updatedUser.phone
+  user.cohort = updatedUser.cohort
   const saved = await user.save()
   res.json(saved)
 })
