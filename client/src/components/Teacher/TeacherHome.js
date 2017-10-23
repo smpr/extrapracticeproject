@@ -49,7 +49,7 @@ class TeacherHome extends Component {
       <BodyWrapper>
         
         <UserList><b>User List:</b> <br/>{this.state.users.map(user => {
-          return (<Link key={user._id} to={`/user/${user._id}/newslist`}>{user.firstName} {user.lastName}<br /></Link>)
+          return (<Link key={user._id} to={`/teacher/${user._id}/studentinfo`}>{user.firstName} {user.lastName}<br /></Link>)
         })}
         </UserList>
         
