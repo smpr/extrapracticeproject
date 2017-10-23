@@ -36,7 +36,7 @@ class StudentInfo extends Component {
 
   getThisUser = async () => {
     try {
-      const res = await axios.get(`/api/users/${this.props.match.params.studentId}`)
+      const res = await axios.get(`/api/users/${this.props.match.params.id}`)
       this.setState({ user: res.data })
     } catch (err) {
       console.log(err)
@@ -52,7 +52,28 @@ class StudentInfo extends Component {
     //redirect back to the user page after the id has been deleted
     this.setState({ redirectToHome: true })
   }
+  handleChange = (event) => {
+    //grab whats being changed
+    const attribute = event.target.name
+    //see whats the new state of being changed
 
+    //set the new user as the old state
+    const clonedUser = { ...this.state.user }
+    //set attribute )
+    //set the old state as the new state
+    clonedUser[attribute] = event.target.value
+    this.setState({ user: clonedUser })
+  }
+  editUser = async () => {
+
+    const userid = this.props.match.params.id
+    const res = await axios.patch(`/api/users/${userid}`, {
+      user: this.state.user,
+    
+
+    })
+    this.setState({ user: res.data, redirectToHome: true })
+  }
   render() {
     if (this.state.redirectToHome) {
       return <Redirect to={`/teachers`} />
@@ -64,22 +85,16 @@ class StudentInfo extends Component {
           <br/>
           <h2><b>Student Info</b></h2>
           <br/>
-          <b>First Name:</b> {this.state.user.firstName}
+          First Name: <input onChange={this.handleChange} name="firstName" value={this.state.user.firstName} />
         
         <div>
-          <b>Last Name: </b> {this.state.user.lastName}
+          Last Name: <input onChange={this.handleChange} name="lastName" value={this.state.user.lastName} />
         </div>
         <div>
-          <b>Email:</b> {this.state.user.email}
-        </div>
-        <div>
-          <b>Phone:</b> {this.state.user.phone}
-        </div>
-        <div>
-          <b>Cohort:</b> {this.state.user.cohort}
+          Email:<input onChange={this.handleChange} name="email" value={this.state.user.email} />
         </div>
         <button onClick={this.deleteUser}>Delete User</button>
-        <button>Edit</button>
+        <button onClick={this.editUser}>Edit</button>
         </UserBlock>
       </BodyWrapper>
     );
