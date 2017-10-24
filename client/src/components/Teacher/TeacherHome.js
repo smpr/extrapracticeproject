@@ -47,16 +47,20 @@ class TeacherHome extends Component {
 
   render () {
     return (
-      <Router>
+   <div>
+     <Nav />
       <BodyWrapper>
-        <Nav />
-        <UserList><b>User List:</b> <br/>{this.state.users.map(user => {
+        
+        
+        <UserList>
+          <b>User List:</b> <br/>{this.state.users.map(user => {
           return (<Link key={user._id} to={`/teacher/${user._id}/studentinfo`}>{user.firstName} {user.lastName}<br /></Link>)
         })}
         </UserList>
-        
+       
       </BodyWrapper>
-      </Router>
+</div>
+      
     )
   }
 }

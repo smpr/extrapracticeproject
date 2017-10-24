@@ -4,7 +4,9 @@ class Header extends Component {
     render() {
         return (
             <div>
-                HEADER!!!
+               THIS IS THE HEADER FILLER!!!<br />
+               ITS WORKING!!!
+               <hr />
             </div>
         );
     }

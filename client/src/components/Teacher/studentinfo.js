@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios'
 import styled from 'styled-components'
+import Nav from '../BoilerPlate/Nav'
 import { Link, Redirect } from 'react-router-dom'
 const BodyWrapper = styled.div`
 display: flex;
@@ -58,7 +59,8 @@ class StudentInfo extends Component {
       return <Redirect to={`/teacher`} />
     }
     return (
-      
+      <div>
+      <Nav />
       <BodyWrapper>
         <UserBlock>
           <br/>
@@ -82,6 +84,7 @@ class StudentInfo extends Component {
         <Link to={`/teacher/${this.props.match.params.studentId}/editstudentinfo`}><button>Edit</button></Link>
         </UserBlock>
       </BodyWrapper>
+      </div>
     );
   }
 }
