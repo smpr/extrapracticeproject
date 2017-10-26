@@ -60,30 +60,41 @@ class StudentInfo extends Component {
     }
     return (
       <div>
-      <Nav />
-      <BodyWrapper>
-        <UserBlock>
-          <br/>
-          <h2><b>Student Info</b></h2>
-          <br/>
-          <b>First Name:</b> {this.state.user.firstName}
-        
-        <div>
-          <b>Last Name: </b> {this.state.user.lastName}
-        </div>
-        <div>
-          <b>Email:</b> {this.state.user.email}
-        </div>
-        <div>
-          <b>Phone:</b> {this.state.user.phone}
-        </div>
-        <div>
-          <b>Cohort:</b> {this.state.user.cohort}
-        </div>
-        <button onClick={this.deleteUser}>Delete Student</button>
-        <Link to={`/teacher/${this.props.match.params.studentId}/editstudentinfo`}><button>Edit</button></Link>
-        </UserBlock>
-      </BodyWrapper>
+        <Nav />
+        <BodyWrapper>
+          <UserBlock>
+            <br />
+            <h2><b>Student Info</b></h2>
+            <br />
+            <table>
+              <tr>
+                <td><b>First Name:</b></td>
+                <td>{this.state.user.firstName}</td>
+              </tr>
+              <tr>
+                <td><b>Last Name:</b></td>
+                <td>{this.state.user.lastName}</td>
+              </tr>
+              <tr>
+                <td><b>Email:</b></td>
+                <td>{this.state.user.email}</td>
+              </tr>
+              <tr>
+                <td><b>Phone:</b></td>
+                <td>{this.state.user.phone}</td>
+              </tr>
+              <tr>
+                <td><b>Cohort:</b></td>
+                <td>{this.state.user.cohort}</td>
+              </tr>
+              <tr>
+                <td><button onClick={this.deleteUser}>Delete Student</button></td>
+                <td><Link to={`/teacher/${this.props.match.params.studentId}/editstudentinfo`}><button>Edit</button></Link></td>
+              </tr>
+            </table>
+
+          </UserBlock>
+        </BodyWrapper>
       </div>
     );
   }

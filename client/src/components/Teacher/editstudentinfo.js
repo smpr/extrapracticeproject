@@ -71,7 +71,7 @@ class StudentInfo extends Component {
     const studentId = this.props.match.params.studentId
     const res = await axios.patch(`/api/users/${studentId}`, {
       user: this.state.user,
-    
+
 
     })
     this.setState({ user: res.data, redirectToHome: true })
@@ -81,27 +81,38 @@ class StudentInfo extends Component {
       return <Redirect to={`/teacher/${this.props.match.params.studentId}/studentinfo`} />
     }
     return (
-      
+
       <BodyWrapper>
         <UserBlock>
-          <br/>
+          <br />
           <h2><b>Student Info</b></h2>
-          <br/>
-          First Name: <input onChange={this.handleChange} name="firstName" value={this.state.user.firstName} />
-        
-        <div>
-          Last Name: <input onChange={this.handleChange} name="lastName" value={this.state.user.lastName} />
-        </div>
-        <div>
-          Email:<input onChange={this.handleChange} name="email" value={this.state.user.email} />
-        </div>
-        <div>
-          Phone:<input onChange={this.handleChange} type="number" name="phone" value={this.state.user.phone} />
-        </div>
-        <div>
-          Cohort:<input onChange={this.handleChange} name="cohort" value={this.state.user.cohort} />
-        </div>
-        <button onClick={this.editUser}>Edit</button>
+          <br />
+          <table>
+            <tr>
+              <td>First Name:</td>
+              <td><input onChange={this.handleChange} name="firstName" value={this.state.user.firstName} /></td>
+            </tr>
+            <tr>
+              <td>Last Name:</td>
+              <td><input onChange={this.handleChange} name="lastName" value={this.state.user.lastName} /></td>
+            </tr>
+            <tr>
+              <td>Email:</td>
+              <td><input onChange={this.handleChange} name="email" value={this.state.user.email} /></td>
+            </tr>
+            <tr>
+              <td>Phone:</td>
+              <td><input onChange={this.handleChange} type="number" name="phone" value={this.state.user.phone} /></td>
+            </tr>
+            <tr>
+              <td>Cohort:</td>
+              <td><input onChange={this.handleChange} name="cohort" value={this.state.user.cohort} /></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><button onClick={this.editUser}>Edit</button></td>
+            </tr>
+          </table>
         </UserBlock>
       </BodyWrapper>
     );
